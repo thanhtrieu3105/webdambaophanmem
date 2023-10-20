@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<section class=" gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class=" bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5" >
+
+                        <div class="mb-md-5 mt-md-4 pb-2 " style="padding:60px">
+
+                            <h2 class="fw-bold mb-5 text-uppercase text-center ">Đăng ký</h2>
+
+                            @using (Html.BeginForm("DangKy", "NguoiDung"))
+                            {
+                                @Html.ValidationSummary(true)
+
+                                <div class="form-outline ">
+                                    <label class="form-label">Họ và Tên</label>@Html.TextBox("TenKH", null, new{@class = "form-control ",@id = "name",required = "required"})
+                                    <hr class="bg-warning" />
+                                 
+                                </div>
+
+                                <div class="form-outline form-white mb-2 clearfix">
+
+                                    <label for="name" class="mb-2">Giới Tính</label>
+                                    <br />
+                                    <div class="form-check w-50 " style="float:left">
+                                        <input class="form-check-input" type="radio" id="gt" name="GioiTinh" value="Nam">
+                                        <p>Nam</p>
+                                       
+                                    </div>
+
+                                    <div class="form-check w-50" style="float:right">
+                                        <input class="form-check-input" type="radio" id="gt" name="GioiTinh" value="Nữ">
+                                        <p>Nữ</p>
+                                    </div>
+                                    
+                                </div>
+                                <hr class="bg-warning" />
+                                <div class="form-outline form-white mb-2 ">
+                                    <label class="form-label">Email</label>
+                                    @Html.TextBox("Email", null, new
+                                    {
+                                        @class = "form-control",
+                                        @id = "email",
+                                        type = "email",
+                                        required = "required"
+                                    })
+                                    <hr class="bg-warning" />
+                                </div>
+                                <div class="form-outline form-white mb-2 ">
+                                    <label class="form-label">Địa chỉ</label>
+                                    @Html.TextBox("DiaChi", null, new
+                                    {
+                                        @class = "form-control",
+                                        @id = "diachi"
+                                    })
+                                    <hr class="bg-warning" />
+                                </div>
+                                <div class="form-outline form-white mb-2 ">
+                                    <label class="form-label">Điện thoại</label>
+                                    @Html.TextBox("SDT", null, new
+                                    {
+                                        @class = "form-control",
+                                        @id = "dienthoai",
+                                        required = "required"
+                                    })
+                                    <hr class="bg-warning" />
+                                </div>
+                                <div class="form-outline form-white mb-2 ">
+                                    <label class="form-label">Mật khẩu</label>
+                                    @Html.Password("MK", null, new
+                                    {
+                                        @class = "form-control",
+                                        @id = "matkhau",
+                                        required = "required"
+                                    })
+                                    <hr class="bg-warning" />
+                                </div>
+                                <div class="form-outline form-white mb-2 ">
+                                    <label for="ngaysinh">Ngày sinh</label>
+                                    @Html.Password("NgaySinh", null, new
+                                    {
+                                        @class = "form-control",
+                                        @id = "ngaysinh",
+                                        type = "date",
+                                        placeholder = "mm/dd/yyyy"
+                                    })
+                                    <hr class="bg-warning" />
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-outline-info btn-lg px-5" style="text-align:center" type="submit">Đăng ký</button>
+                                </div>
+                               
+                            }
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

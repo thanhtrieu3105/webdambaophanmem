@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Digital way</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header  style="background-color: #D4FAFC; ">
+        @*Logo*@
+        <div class="head">
+            <div class="logo">
+                <a href="@Url.Action("Index", "QuanLySanPham")"> <img src="~/Images/home-image.png" /></a>
+                <a href="@Url.Action("Index", "QuanLySanPham")" style="text-decoration:none;color:black">QUẢN LÝ SẢN PHẨM |</a>
+                <a href="@Url.Action("Index", "QuanLyDonHang")" style="text-decoration:none;color:black">QUẢN LÝ ĐƠN HÀNG |</a>
+                <a href="@Url.Action("Index", "QuanLyKhachHang")" style="text-decoration:none;color:black">QUẢN LÝ KHÁCH HÀNG|</a>
+                <a href="@Url.Action("Index", "PhieuGiamGias")" style="text-decoration:none;color:black">QUẢN LÝ PHIẾU GIẢM GIÁ</a>
+            </div>
+
+
+            @*   <div class="search-cart">
+                <div class="search-sp">
+                    <i class="fa fa-search"></i>
+                </div>*@
+
+
+        </div>
+
+
+        <form class="form-search " onsubmit="return false;" style="display:none;">
+            <div class="click-search">
+                <i class="search"></i>
+                <input type="text" placeholder="Tìm kiếm sản phẩm" />
+                <i class="delSearch"></i>
+            </div>
+            <button type="submit" class="submit-search" style="display:none"></button>
+            <div class="sg-search"></div>
+        </form>
+
+
+
+    </header>
+
+
+    @*Image slideshow*@
+    <div id="div-main">
+
+        @RenderBody()
+    </div>
+
+    @*<div id="div-footer">
+            Footer
+        </div>
+
+    *@
+
+
+</body>
+
+</html>

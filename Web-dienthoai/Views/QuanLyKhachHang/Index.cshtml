@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Web_dienthoai.Models.KhachHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin:30px">
+<h2 style="text-align: center">QUẢN LÝ KHÁCH HÀNG</h2>
+
+<p>
+    @Html.ActionLink("Tạo Mới", "Create")
+</p>
+<table class="table table-striped">
+    <thead style="background-color:darkgoldenrod">
+        <tr>
+            <th style="width:100px">
+                @Html.DisplayNameFor(model => model.MaKH)
+            </th>
+            <th style="width:400px">
+                HỌ TÊN
+            </th>
+            <th style="width:200px">
+                SDT
+            </th>
+            <th style="width:400px">
+                ĐỊA CHỈ
+            </th>
+            <th style="width:200px">
+                GIỚI TÍNH
+            </th>
+            <th style="width:200px">
+                NGÀY SINH
+            </th>
+            <th style="width:200px">
+                MẬT KHẨU
+            </th>
+            <th style="width:200px">
+                EMAIL
+            </th>
+            <th style="width:200px">
+                CẤP BẬC
+            </th>
+            <th style="width:200px">
+            </th>
+        </tr>
+    </thead>
+   
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaKH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenKH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SDT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiaChi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GioiTinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgaySinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MK)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoaiKH.TenLoaiKH)
+                </td>
+                <td style="width:500px">
+                    @Html.ActionLink("Xem", "Details", new { id = item.MaKH })|
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.MaKH }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaKH })
+                </td>
+            </tr>
+        }
+    </tbody>
+    
+
+</table>
+
+</div>

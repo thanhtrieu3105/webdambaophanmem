@@ -1,0 +1,45 @@
+﻿@model Web_dienthoai.Models.PhieuGiamGia
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin:30px">
+    <h2 style="text-align:center">Xóa Phiếu Giảm Giá</h2>
+
+    <h3 style="color:red">@ViewBag.tb </h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tên Giảm Giá
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenGiamGia)
+            </dd>
+
+            <dt>
+                Chiếc Khấu
+            </dt>
+
+            <dd>
+                @String.Format("{0:F1}", Model.chietkhau * 100)%
+
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-warning" /> |
+                @Html.ActionLink("Trở về", "Index")
+            </div>
+        }
+    </div>
+
+</div>

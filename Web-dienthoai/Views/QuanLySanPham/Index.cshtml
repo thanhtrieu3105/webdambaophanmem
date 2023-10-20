@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Web_dienthoai.Models.ProductView>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<div style="margin: 30px;">
+    <h2 style="text-align: center">QUẢN LÝ SẢN PHẨM</h2>
+    <hr />
+
+    <p>
+        @Html.ActionLink("Tạo Mới", "Create")
+    </p>
+    <table class="table table-striped">
+        <thead style="background-color:darkgoldenrod">
+            <tr>
+                <th style="width:200px">
+                    MÃ SẢN PHẨM
+                </th>
+                <th style="width:200px">
+                    TÊN SẢN PHẨM
+                </th>
+                <th style="width:200px">
+                    THƯƠNG HIỆU
+                </th>
+                <th style="width:200px">
+                    SỐ LƯỢNG
+                </th>
+                <th style="width:200px">
+                    GIÁ
+                </th>
+                <th style="width:200px">
+                    MÔ TẢ
+                </th>
+                <th style="width:200px">
+                    HÌNH SẢN PHẨM
+                </th>
+                <th style="width:400px">
+                    THAO TÁC
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td >
+                        @item.SanPham.MaSP
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SanPham.TenSP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ThuongHieu.TenTH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ChiTietSP.SoLuongKho)
+                    </td>
+                    <td>
+                        <a style="color:red;font-weight:bold">@String.Format("{0:0,0}", item.ChiTietSP.Gia) đ</a>
+                    </td>
+                    <td>
+                        <p class="mota" style="color:darkturquoise">Xem thêm</p>
+                    </td>
+                    <td style="text-decoration:none">
+
+                        <img style="width:80px;height:100px" src="~/Images/Phones/@item.HinhSP.MaHinh" /><br />
+                        <a href="@Url.Action("Index", "QuanLyHinhSPs", new { id = item.SanPham.MaSP })" style="text-decoration:none">Thêm hình</a>
+                    </td>
+                    <td>
+                        <br />
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.SanPham.MaSP }) |
+                        @Html.ActionLink("Chi tiet", "Details", new { id = item.SanPham.MaSP }) |
+                        @Html.ActionLink("Xóa ", "HoiXoa", new { id = item.SanPham.MaSP })
+                    </td>
+                </tr>
+                <tr class="description-row" style="display:none;font-size:14px">
+                    <td colspan="7">
+                        @Html.DisplayFor(modelItem => item.SanPham.MoTaSP)
+                    </td>
+                </tr>
+
+
+            }
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+            $(".mota").click(function () {
+                $(this).closest('tr').next(".description-row").toggle();
+            });
+        });
+    </script>
+</div>

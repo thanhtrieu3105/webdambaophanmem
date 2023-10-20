@@ -1,0 +1,362 @@
+﻿@model IEnumerable<Web_dienthoai.Models.ThuongHieu>
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div style="margin: 10px auto; width: 80%;">
+    <h2 style="text-align: center;">TẠO MỚI SẢN PHẨM</h2>
+    <section class=" bg-gradient bg-secondary">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-12 col-xl-5">
+                    <div class=" bg-opacity-50 text-bg-dark" style="border-radius: 1rem;">
+                        <div class="card-body p-5">
+
+                            @using (Html.BeginForm("Create", "QuanLySanPham", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                            {
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    TÊN SẢN PHẨM
+                                    <div class="">
+                                        @Html.TextBox("TenSP", null, new { @class = "form-control ", @id = "name", required = "required" })
+                                        <hr class="bg-warning" />
+                                    </div>
+                                </div>
+                                <div class="form-outline form-white mb-2 ">
+
+                                    <label for="name" class="mb-2">Thương hiệu</label>
+                                    <select name="MaTH" id="MaTH">
+                                        @foreach (var item in Model)
+                                        {
+                                            @*<div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="MaTH" name="MaTH" value="@item.MaTH">
+                                                    <p>@item.TenTH</p>
+                                                </div>*@
+                                            <option value="@item.MaTH">@item.TenTH</option>
+                                        }
+                                    </select>
+
+
+
+                                    <hr class="bg-warning" />
+                                </div>
+
+                                <div class="form-group">
+                                    Số lượng kho
+                                    <div class="col-md-10">
+                                        @Html.TextBox("SoLuongKho", null, new { @class = "form-control ", @id = "name", type = "number", required = "required" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    Giá
+                                    <div class="col-md-10">
+                                        @Html.TextBox("Gia", null, new { @class = "form-control ", @id = "name", type = "number", required = "required" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p>
+                                        Ảnh sản phẩm
+                                    </p>
+                                    <input type="file" id="Anh" name="Anh" aria-label="gửi ảnh thực tế">
+                                </div>
+                                <div class="form-group">
+                                    MÔ TẢ SẢN PHẨM
+                                    <div class="col-md-10">
+                                        <textarea class="form-control" name="MoTaSP" id="MoTaSP" rows="3" placeholder="Giới thiệu thêm thông tin về sản phẩm"></textarea>
+                                    </div>
+                                </div>
+                                <h4>Thông số kỹ thật sản phẩm</h4>
+                                <div class="form-group">
+                                    Công nghệ màn hình
+                                    <div class="col-md-10">
+                                        @Html.TextBox("CongNgheManHinh", null, new { @class = "form-control ", @id = "name", required = "required" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Độ phân giải
+                                    <div class="col-md-10">
+                                        @Html.TextBox("DoPhanGiai", null, new { @class = "form-control ", @id = "name"})
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Màn Hình rộng
+                                    <div class="col-md-10">
+                                        @Html.TextBox("ManHinhrong", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Mặt kính cảm ứng
+                                    <div class="col-md-10">
+                                        @Html.TextBox("MatKinhCamUng", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Độ phân giải cam sau
+                                    <div class="col-md-10">
+                                        @Html.TextBox("DoPhanGiaiCamS", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Quay Phim
+                                    <div class="col-md-10">
+                                        @Html.TextBox("QuayPhim", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Flash
+                                    <div class="col-md-10">
+                                        @Html.TextBox("Flash", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Tính Năng Cam Sau
+                                    <div class="col-md-10">
+                                        @Html.TextBox("TinhNangCamS", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    Độ phân giải cam trước
+                                    <div class="col-md-10">
+                                        @Html.TextBox("DoPhanGiaiCamT", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Tính Năng Cam Trước
+                                    <div class="col-md-10">
+                                        @Html.TextBox("TinhNangCamT", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Hệ Điều Hành
+                                    <div>
+                                        @Html.TextBox("HeDieuHanh", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    CPU
+                                    <div class="col-md-10">
+                                        @Html.TextBox("CPU", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Tốc Độ CPU
+                                    <div>
+                                        @Html.TextBox("TocDoCPU", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    GPU
+                                    <div class="col-md-10">
+                                        @Html.TextBox("GPU", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    RAM
+                                    <div class="col-md-10">
+                                        @Html.TextBox("RAM", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Dung Lượng
+                                    <div class="col-md-10">
+                                        @Html.TextBox("DungLuong", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Dung Lượng Con
+                                    <div class="col-md-10">
+                                        @Html.TextBox("DungLuongCon", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Danh Bạ
+                                    <div class="col-md-10">
+                                        @Html.TextBox("DanhBa", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Mạng
+                                    <div class="col-md-10">
+                                        @Html.TextBox("Mang", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Sim
+                                    <div class="col-md-10">
+                                        @Html.TextBox("Sim", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Wifi
+                                    <div class="col-md-10">
+                                        @Html.TextBox("Wifi", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    GPS
+                                    <div class="col-md-10">
+                                        @Html.TextBox("GPS", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Bluetooth
+                                    <div class="col-md-10">
+                                        @Html.TextBox("Bluetooth", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    Sạc
+                                    <div class="col-md-10">
+                                        @Html.TextBox("Sac", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Jack
+                                    <div class="col-md-10">
+                                        @Html.TextBox("Jack", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Kết Nối Khác
+                                    <div class="col-md-10">
+                                        @Html.TextBox("KetNoiKhac", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Dung Lượng Pin
+                                    <div class="col-md-10">
+                                        @Html.TextBox("DungLuongPin", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Loại Pin
+                                    <div class="col-md-10">
+                                        @Html.TextBox("LoaiPin", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Sạc Tối Đa
+                                    <div class="col-md-10">
+                                        @Html.TextBox("SacToiDa", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    Công Nghệ Pin
+                                    <div class="col-md-10">
+                                        @Html.TextBox("CongNghePin", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Bảo Mật Nâng Cao
+                                    <div class="col-md-10">
+                                        @Html.TextBox("BaoMatNC", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Tính Năng Đặc Biệc
+                                    <div class="col-md-10">
+                                        @Html.TextBox("TinhNangDB", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Kháng Nước Bụi
+                                    <div class="col-md-10">
+                                        @Html.TextBox("KhangNuocBui", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Xem Phim
+                                    <div class="col-md-10">
+                                        @Html.TextBox("XemPhim", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Nghe Nhạc
+                                    <div class="col-md-10">
+                                        @Html.TextBox("NgheNhac", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Thiết Kế
+                                    <div class="col-md-10">
+                                        @Html.TextBox("ThietKe", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Chất Liệu
+                                    <div class="col-md-10">
+                                        @Html.TextBox("ChatLieu", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Kích Thước
+                                    <div class="col-md-10">
+                                        @Html.TextBox("KichThuoc", null, new { @class = "form-control ", @id = "name" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Thời Điển Ra Mắt
+                                    <div class="col-md-10">
+                                        @Html.TextBox("ThoiDiemRaMat", null, new { @class = "form-control ", type = "date", @id = "name" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10 mb-3 mt-3">
+                                        <input type="submit" value="TẠO MỚI" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+<div>
+    @Html.ActionLink("Trở về", "Index", "QuanLySanPham")
+</div>
+
+

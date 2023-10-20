@@ -1,0 +1,376 @@
+﻿@model Web_dienthoai.Models.ProductView
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div style="margin: 10px auto; width: 70%;">
+    <h2 style="text-align: center;">CHỈNH SỬA SẢN PHẨM</h2>
+
+    <div class="form-horizontal">   
+        <hr />
+        @using (Html.BeginForm("Edit", "QuanLySanPham"))
+        {
+            @Html.ValidationSummary(true)
+
+            <p>Mã Sản Phẩm:@Model.SanPham.MaSP</p>
+
+            <div class="form-group">
+                Tên Sản Phẩm
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="TenSP" name="TenSP" value="@Model.SanPham.TenSP" @*oninput="updateValue(this.value)"*@ />
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                Mô tả sản phẩm
+                <div class="col-md-10">
+
+                    <textarea id="MoTaSP" name="MoTaSP">@Model.SanPham.MoTaSP</textarea>
+
+                    <p style="background-color:#0094ff;width:150px" onclick="getValue()">Lưu mô tả mới</p>
+
+
+                </div>
+            </div>
+
+
+            <div class="form-outline form-white mb-2 ">
+
+                <label for="name" class="mb-2">Thương Hiệu: @ViewBag.THSP</label>
+                <select name="MaTH" id="MaTH">
+                    @foreach (var item in ViewBag.TH)
+                    {
+                        <option value="@item.MaTH">@item.TenTH</option>
+                    }
+                </select>
+                @*<div class="form-check">
+                    <input class="form-check-input" type="radio" id="MaTH" name="MaTH" value="@item.MaTH">
+                    <p>@item.TenTH</p>
+                </div>*@
+                <hr class="bg-warning" />
+            </div>
+
+            <div class="form-group">
+                Số Lượng Kho 
+                <div class="col-md-10">
+                    <input type="number" class="form-control" id="SoLuongKho" name="SoLuongKho" value="@Model.ChiTietSP.SoLuongKho" @*oninput="updateValue(this.value)"*@ />
+                </div>
+            </div>
+            <div class="form-group">
+                Giá
+                <div class="col-md-10">
+                    <input type="number" class="form-control" id="Gia" name="Gia" value="@Model.ChiTietSP.Gia" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+            @*<div class="form-group">
+                    <img style="width:80px;height:100px" src="~/Images/Phones/@Model.HinhSP.MaHinh" />
+                </div>*@
+
+            <h4>Thông số kỹ thật sản phẩm</h4>
+            <div class="form-group">
+                Công Nghệ Màn Hình 
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="CongNgheManHinh" name="CongNgheManHinh" value="@Model.TSKTSP.CongNgheManHinh" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+              Độ phân giải
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="DoPhanGiai" name="DoPhanGiai" value="@Model.TSKTSP.DoPhanGiai" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                Màn Hình Rộng
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="ManHinhrong" name="ManHinhrong" value="@Model.TSKTSP.ManHinhrong" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+               Mặt Kính Cảm Ứng
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="MatKinhCamUng" name="MatKinhCamUng" value="@Model.TSKTSP.MatKinhCamUng" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+               Độ Phân Giải Cam Sau
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="DoPhanGiaiCamS" name="DoPhanGiaiCamS" value="@Model.TSKTSP.DoPhanGiaiCamS" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                Quay Phim
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="QuayPhim" name="QuayPhim" value="@Model.TSKTSP.QuayPhim" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+              Flash
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="Flash" name="Flash" value="@Model.TSKTSP.Flash" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                Tính Năng Cam Trước
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="TinhNangCamS" name="TinhNangCamS" value="@Model.TSKTSP.TinhNangCamS" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+               Độ Phân Giải Cam Trước
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="DoPhanGiaiCamT" name="DoPhanGiaiCamT" value="@Model.TSKTSP.DoPhanGiaiCamT" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+              Tính Năng Cam Trước 
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="TinhNangCamT" name="TinhNangCamT" value="@Model.TSKTSP.TinhNangCamT" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+              Hệ Điều Hành 
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="HeDieuHanh" name="HeDieuHanh" value="@Model.TSKTSP.HeDieuHanh" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                CPU
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="CPU" name="CPU" value="@Model.TSKTSP.CPU" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+               Tốc Độ CPU
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="TocDoCPU" name="TocDoCPU" value="@Model.TSKTSP.TocDoCPU" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+               GPU
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="GPU" name="GPU" value="@Model.TSKTSP.GPU" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+            <div class="form-group">
+               RAM
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="RAM" name="RAM" value="@Model.TSKTSP.RAM" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                Dung Lượng 
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="DungLuong" name="DungLuong" value="@Model.TSKTSP.DungLuong" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                Dung Lượng Con 
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="DungLuongCon" name="DungLuongCon" value="@Model.TSKTSP.DungLuongCon" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                Danh Bạ
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="DanhBa" name="DanhBa" value="@Model.TSKTSP.DanhBa" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+              Mạng
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="Mang" name="Mang" value="@Model.TSKTSP.Mang" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+               Sim
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="Sim" name="Sim" value="@Model.TSKTSP.Sim" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+               wifi
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="Wifi" name="Wifi" value="@Model.TSKTSP.Wifi" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+               GPS
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="GPS" name="GPS" value="@Model.TSKTSP.GPS" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+               Bluetooth
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="Bluetooth" name="Bluetooth" value="@Model.TSKTSP.Bluetooth" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+               Sạc
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="Sac" name="Sac" value="@Model.TSKTSP.Sac" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                Jack
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="Jack" name="Jack" value="@Model.TSKTSP.Jack" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+               Kết Nối Khác
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="KetNoiKhac" name="KetNoiKhac" value="@Model.TSKTSP.KetNoiKhac" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                Dung Lượng Pin
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="DungLuongPin" name="DungLuongPin" value="@Model.TSKTSP.DungLuongPin" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                Loại pin
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="LoaiPin" name="LoaiPin" value="@Model.TSKTSP.LoaiPin" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+               Sạc Tối Đa
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="SacToiDa" name="SacToiDa" value="@Model.TSKTSP.SacToiDa" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+               Công Nghệ Pin
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="CongNghePin" name="CongNghePin" value="@Model.TSKTSP.CongNghePin" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                Bảo Mật Nâng Cao
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="BaoMatNC" name="BaoMatNC" value="@Model.TSKTSP.BaoMatNC" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                Tính Năng ĐẶC Biệt
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="TinhNangDB" name="TinhNangDB" value="@Model.TSKTSP.TinhNangDB" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                Kháng nước Bụi
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="KhangNuocBui" name="KhangNuocBui" value="@Model.TSKTSP.KhangNuocBui" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                Xem Phim
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="XemPhim" name="XemPhim" value="@Model.TSKTSP.XemPhim" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                Nghe Nhạc
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="NgheNhac" name="NgheNhac" value="@Model.TSKTSP.NgheNhac" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                Thiết Kế
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="ThietKe" name="ThietKe" value="@Model.TSKTSP.ThietKe" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+               Chất Liệu
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="ChatLieu" name="ChatLieu" value="@Model.TSKTSP.ChatLieu" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+               Kích Thước
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="KichThuoc" name="KichThuoc" value="@Model.TSKTSP.KichThuoc" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+               Thời Điểm Ra Mắt
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="ThoiDiemRaMat" name="ThoiDiemRaMat" value="@Model.TSKTSP.ThoiDiemRaMat" oninput="updateValue(this.value)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+
+        }
+
+    </div>
+
+
+    <div>
+        @Html.ActionLink("Trở về", "Index", "QuanLySanPham")
+
+    </div>
+
+    <script>
+        function updateValue(value) {
+            // Thực hiện các thao tác cần thiết với giá trị nhập vào
+            console.log("Giá trị đã nhập: " + value);
+            // Cập nhật giá trị vào các thành phần khác trên trang (nếu cần)
+        }
+    </script>
+    <script>
+        function getValue() {
+            var textareaValue = document.getElementById('MoTaSP').value;
+            alert('Giá trị của textarea là: ' + textareaValue);
+        }
+    </script>
+</div>

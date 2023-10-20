@@ -1,0 +1,63 @@
+﻿@using Web_dienthoai.Models;
+@model ChiTietDonHangView
+@{
+    ViewBag.Title = "ChiTietDonHang";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div class="  " style="margin:20px">
+
+    <h4 style="text-align:center;font-weight:bold">Chi Tiết Đơn Hàng</h4>
+    <h6 style="color: darkgoldenrod">@Model.donHang.TinhTrang</h6>
+    <hr style="border: 8px solid antiquewhite; " />
+    <p><b style="color: darkgoldenrod">@Model.donHang.TenNguoiNhan</b> @Model.donHang.SDTnhan</p>
+    <p>@Model.donHang.DiaChiNhan</p>
+    <hr style="border: 8px solid antiquewhite; " />
+    @foreach (var s in Model.ListCTSPViews)
+    {
+        <div class="SanPhamMua  " style="display: flex; flex-direction: row">
+            <div class="div-left" style="width:15% ;text-align:center">
+                <img class="w-75 h-100" src="~/Images/Phones/@s.HinhSP" alt="Lỗi Hình">
+            </div>
+            <div class="div-right" style="width:85%">
+                <h6 style="color:darkgoldenrod">@s.TenSP</h6>
+                <p>x @s.SoLuong</p>
+                <p style="color: darkgoldenrod">@String.Format("{0:0,0}", @s.DonGia) đ</p>
+                <p>@s.tengiamgia</p>
+                <p style="color: red;font-weight:bold">Thành tiền @String.Format("{0:0,0}", @s.ThanhTien) đ</p>
+                <div style="text-align:center">
+                    @*<button type="button" style="background-color:lightgray;height:40px;width:150px;border-radius:5px" >Đánh Giá</button>
+            <a href="@Url.Action("Details", "PhoneStore", new { id =s.MaSP })">
+
+            </a>*@
+                    @Html.ActionLink("Đánh giá", "Details", "PhoneStore", new { id = s.MaSP }, new { @class = "btn btn-secondary" })
+
+                </div>
+            </div>
+        </div>
+        <hr style="border: 8px solid antiquewhite; " />
+    }
+    <div class="SanPhamMua  " style="display: flex; flex-direction: row;align-content:center">
+        <div class="div-left" style="width:50% ;text-align:left">
+            <p> <b style="color: darkgoldenrod">Đơn hàng số:</b></p>
+            <p>Đặt ngày:</p>
+            <p>Hình thức thanh toán:</p>
+            <p>Hình thức giao hàng:</p>
+            <hr style="border: 8px solid antiquewhite; " />
+            <p>Trị giá (@ViewBag.tongsl):</p>
+            <p>Phí vận chuyển:</p>
+            <b style="color: darkgoldenrod">Tổng cộng(bao gồm VAT)</b>
+        </div>
+        <div class="div-right" style="width:50%;text-align:left">
+            <p><b style="color: darkgoldenrod"> @Model.donHang.MaDH</b></p>
+            <p>@Model.donHang.NgayDH</p>
+            <p>@Model.donHang.HTThanhToan</p>
+            <p>@Model.donHang.HTGiaohang</p>
+            <hr style="border: 8px solid antiquewhite; " />
+            <p>@String.Format("{0:0,0}", @Model.donHang.TriGia) đ</p>
+            <p>@String.Format("{0:0,0}", @ViewBag.phivc) đ</p>
+            <p style="color: red;font-weight:bold">@String.Format("{0:0,0}", @Model.donHang.TongTien) đ</p>
+        </div>
+    </div>
+
+</div>

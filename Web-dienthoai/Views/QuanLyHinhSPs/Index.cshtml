@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Web_dienthoai.Models.HinhSP>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SanPham.TenSP)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img style="width:80px;height:100px" src="~/Images/Phones/@item.MaHinh" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaHinh }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaHinh }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.MaSP })
+        </td>
+    </tr>
+}
+
+</table>

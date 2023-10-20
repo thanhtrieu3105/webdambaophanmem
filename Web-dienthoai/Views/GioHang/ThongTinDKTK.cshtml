@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "ThongTinDKTK";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div class=" ">
+    <h3 class="white-text" style="text-align: center">Chúc Mừng Quý Khách Đã Đặc Hàng Thành Công <br />Nhân Viên Sẽ Liên Hệ Xác Nhận Đơn Hàng Sớm Trong 15 Phút</h3>
+    <br />
+    <h6 style="color:red">@ViewBag.Thongbao</h6>
+    <h4>Tài Khoản Của Quý Khách</h4>
+
+    <p>Tài Khoản: @ViewBag.TenDN</p>
+    <p>Mật Khẩu: @ViewBag.MK</p>
+    <p>Tên Khách Hàng: @ViewBag.TENKH</p>
+    <p>Địa Chỉ: @ViewBag.DIACHI</p>
+    <br />
+
+    <div style="text-align:center;padding:10px">
+        @Html.ActionLink("Về Trang Chủ", "Index", "PhoneStore", null, new { @class = "btn btn-primary" })
+    </div>
+
+</div>
+
+ 
+

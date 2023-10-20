@@ -1,0 +1,49 @@
+﻿
+@{ ViewBag.Title = "TrangTK";
+                Layout = "~/Views/Shared/_MasterLayout.cshtml";
+                KhachHang kh = Session["KhachHang"] as KhachHang; }
+
+<link rel="stylesheet" href="~/Content/Image.css" />
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+
+
+@using Web_dienthoai.Models
+@model KhachHang
+
+@*<header style="color:white"> TenTK:@kh.TenKH</header>
+    <br />*@
+
+<body>
+
+    @*<h2 class=" "> TenTK:@kh.TenKH</h2>*@
+
+    <br />
+
+    <div class="logo-container" style="text-align:center; ">
+        <img src="~/Images/user_temp.jpg" alt="Logo" style=" width: 20%; height: auto; display:inline-block;">
+    </div>
+
+    <br />
+    <table class="table" style="width:40%;text-align:center;margin:10px auto">
+        <tr>
+            <td style="text-align:center;font-weight: bold; background-color: #F6F6F6"> Tên tài khoản: @kh.TenKH  @Html.ActionLink(" ", "TrangThongTinTK", "NguoiDung", null, new { @class = "text-dark text-decoration-none" })</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; font-weight: bold "> @Html.ActionLink("Tài Khoản", "TrangThongTinTK", "NguoiDung", null, new { @class = "text-dark text-decoration-none" })</tdstyle="text-align:center;font-weight:bold">
+        </tr>
+        <tr>
+            <td style="text-align: center; font-weight: bold; background-color: #F6F6F6 "> @Html.ActionLink("Lịch Sử Mua Hàng", "LichSuMuaHang", "NguoiDung", new { id = kh.MaKH }, new { @class = "text-dark text-decoration-none" })</td>
+        </tr>
+    </table>
+    
+
+    </div>
+    <br />
+    <div style="text-align:center">
+        @Html.ActionLink("Đăng Xuất", "DangXuat", "NguoiDung", null, new { @class = "btn btn-warning" })
+    </div>
+
+
+
+</body>
+

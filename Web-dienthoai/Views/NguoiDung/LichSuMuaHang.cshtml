@@ -1,0 +1,55 @@
+﻿@using Web_dienthoai.Models
+@model IEnumerable<ItemDonHang>
+
+@{
+    ViewBag.Title = "LichSuMuaHang";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<br />
+<h4 class=" text-center"style="font-weight:bold">Lịch sử mua hàng</h4>
+<h2 class=" ">@ViewBag.thongbao</h2>
+<body style="margin-left:10px">
+    <div class="">
+
+        @foreach (var item in Model)
+        {
+            <hr style="border: 8px solid ; " />
+            <h6 class=" ">Đơn hàng số :@item.MaDH</h6> <br />
+
+            <div>
+                <div class="DonHang  " style="display: flex; flex-direction: row">
+                    <div class="div-left" style="width:15% ;text-align:center">
+                        <img class="w-75 h-100" src="~/Images/Phones/@item.HinhSP" alt="Lỗi Hình">
+                    </div>
+                    <div class="div-right" style="width:85%">
+                        <h5>@item.TenSP</h5>
+                        <p>x @item.SoLuong</p>
+                        <p>@String.Format("{0:0,0}", item.gia) đ</p>
+                        <p>@item.tengiamgia</p>
+
+                    </div>
+
+                </div>
+                <hr  />
+                <div>
+                    <a href=" @Url.Action("ChiTietDonHang", "NguoiDung", new { id = item.MaDH }) ">Xem Thêm </a>
+                </div>
+                <hr  />
+                <div>
+                    <p style="color:darkgray;margin:0;width:max-content">@item.TongSL sản phẩm</p>
+                    <p style="color:red ;margin:0;font-weight:bold">Thành tiền: @String.Format("{0:0,0}", item.TongTien)đ </p>
+                </div>
+                <hr />
+                <div>
+                    <p style="color:lightseagreen ;margin:0;font-weight:bold">Trạng Thái: @item.Tinhtrang </p>
+                </div>
+                <hr  />
+
+            </div>
+            <div style="text-align:center;padding-bottom:30px">@Html.ActionLink("Hủy", "XacNhanHuyDon", "NguoiDung", new { MaDH = item.MaDH }, new { @class = "btn btn-danger" })</div>
+
+        }
+    </div>
+</body>
+

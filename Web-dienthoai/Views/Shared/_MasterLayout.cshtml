@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+
+<html style="color:white">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/mystyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <header style="background-color: #D4FAFC; ">
+        @*Logo*@
+        <div class="head">
+            <div class="logo">
+                <a href="@Url.Action("Index", "PhoneStore")"> <img src="~/Images/home-image.png" /></a>
+            </div>
+
+            @*Navbar-item*@
+            @Html.Action("LayHangDT", "PhoneStore")
+
+
+            @*   <div class="search-cart">
+                <div class="search-sp">
+                    <i class="fa fa-search"></i>
+                </div>*@
+
+            <div class="">
+                <i style="margin-right:5px">@Html.Action("GioHangPartial", "GioHang")</i>
+                <i>@Html.Action("UserPartial", "NguoiDung")</i>
+            </div>
+
+
+
+
+        </div>
+
+
+        <form class="form-search " onsubmit="return false;" style="display:none;">
+            <div class="click-search">
+                <i class="search"></i>
+                <input type="text" placeholder="Tìm kiếm sản phẩm" />
+                <i class="delSearch"></i>
+            </div>
+            <button type="submit" class="submit-search" style="display:none"></button>
+            <div class="sg-search"></div>
+        </form>
+
+
+
+    </header>
+
+
+    @*Image slideshow*@
+    <div id="div-main">
+
+        @RenderBody()
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-light text-muted" style="margin-top: 10px;">
+
+        <hr />
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>Thương hiệu DigitalWave
+                        </h6>
+                        <p>
+                            DigitalWave là một cái tên thương hiệu đầy mạnh mẽ và năng động trong lĩnh vực bán điện thoại. Tên gọi này kết hợp giữa từ "digital" - mang ý nghĩa về công nghệ số và "wave" - biểu tượng cho sự phát triển và lan tỏa. Với sự kết hợp này, DigitalWave như muốn truyền tải thông điệp rằng họ là một cửa hàng bán điện thoại hiện đại, luôn cập nhật và tiên tiến về công nghệ.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Sản phẩm
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Huawei</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Iphone</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Oppo</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Realme</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Samsung</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Vivo</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Xiaomi</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Link hữu ích
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Bảo hành</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Bản quyền</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Phân phối</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Trợ giúp</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <p><i class="bi bi-geo-alt"></i> 828 Sư Vạn Hạnh, Quận 10, Hồ Chí Minh</p>
+                        <p>
+                            <i class="bi bi-envelope"></i>
+                            digitalwave@gmail.com
+                        </p>
+
+                        <p><i class="bi bi-telephone"></i> +84 835 911 358</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2023 Copyright:
+            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">digitalwave.org</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+    </script>
+</body>
+
+</html>

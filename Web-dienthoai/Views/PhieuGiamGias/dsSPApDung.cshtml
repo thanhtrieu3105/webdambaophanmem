@@ -1,0 +1,37 @@
+﻿@using Web_dienthoai.Models
+@model IEnumerable<Web_dienthoai.Models.SanPham>
+@{
+    ViewBag.Title = "dsSPApDung";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int id = int.Parse(ViewBag.id.ToString());
+}
+
+<div style="margin:30px">
+    <h4 style="text-align:center">Danh sách đã áp dụng mã :@ViewBag.tenmgg </h4>
+    @Html.ActionLink("chưa áp dụng ", "dsSPChuaApDung", new { id = id })
+    <table class="table table-hover  ">
+        <thead>
+            <tr>
+                <th>Mã Sản Phẩm</th>
+                <th>Tên Sản Phẩm</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaSP</td>
+                    <td>@item.TenSP</td>
+                    <td>
+                        @Html.ActionLink("Hủy", "Huy", new { MaSP = item.MaSP, id = id })
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+

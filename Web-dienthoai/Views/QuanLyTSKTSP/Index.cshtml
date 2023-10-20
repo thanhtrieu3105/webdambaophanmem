@@ -1,0 +1,149 @@
+﻿@model IEnumerable<Web_dienthoai.Models.TSKTSP>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Tạo Mới", "Create")
+</p>
+<table class="table">
+    @foreach (var item in Model)
+    {
+        
+        <tr>
+            <td>Mã sản phẩm: </td>
+            <td>@Html.DisplayFor(modelItem => item.MaSP)</td>
+            <td>Công nghệ màn hình: </td>
+            <td>@Html.DisplayFor(modelItem => item.CongNgheManHinh)</td>
+        </tr>
+        <tr>
+            <td>Độ phân giải: </td>
+            <td>@Html.DisplayFor(modelItem => item.DoPhanGiai)</td>
+            <td>Độ rộng màn hình: </td>
+            <td> @Html.DisplayFor(modelItem => item.ManHinhrong)</td>
+        </tr>
+        <tr>
+            <td>Mặt kính cảm ứng: </td>
+            <td> @Html.DisplayFor(modelItem => item.MatKinhCamUng)</td>
+            <td>Độ phân giải Camera sau: </td>
+            <td> @Html.DisplayFor(modelItem => item.DoPhanGiaiCamS)</td>
+        </tr>
+        <tr>
+            <td>Chất lượng hình ảnh: </td>
+            <td> @Html.DisplayFor(modelItem => item.QuayPhim)</td>
+            <td>Flash: </td>
+            <td> @Html.DisplayFor(modelItem => item.Flash)</td>
+        </tr>
+        <tr>
+            <td>Tính năng Camera sau: </td>
+            <td> @Html.DisplayFor(modelItem => item.TinhNangCamS)</td>
+            <td>Độ phân giải Camera trước: </td>
+            <td> @Html.DisplayFor(modelItem => item.DoPhanGiaiCamT)</td>
+        </tr>
+        <tr>
+            <td>Tính năng Camera trước: </td>
+            <td> @Html.DisplayFor(modelItem => item.TinhNangCamT)</td>
+            <td>Hệ điều hành: </td>
+            <td> @Html.DisplayFor(modelItem => item.HeDieuHanh)</td>
+        </tr>
+        <tr>
+            <td>CPU: </td>
+            <td> @Html.DisplayFor(modelItem => item.CPU)</td>
+            <td>Tốc độ CPU: </td>
+            <td> @Html.DisplayFor(modelItem => item.TocDoCPU)</td>
+        </tr>
+        <tr>
+            <td>GPU: </td>
+            <td> @Html.DisplayFor(modelItem => item.GPU)</td>
+            <td>RAM: </td>
+            <td> @Html.DisplayFor(modelItem => item.RAM)</td>
+        </tr>
+        <tr>
+            <td>Dung lượng: </td>
+            <td> @Html.DisplayFor(modelItem => item.DungLuong)</td>
+            <td>Dung lượng con: </td>
+            <td> @Html.DisplayFor(modelItem => item.DungLuongCon)</td>
+        </tr>
+        <tr>
+            <td>Danh bạ: </td>
+            <td> @Html.DisplayFor(modelItem => item.DanhBa)</td>
+            <td>Mạng: </td>
+            <td> @Html.DisplayFor(modelItem => item.Mang)</td>
+        </tr>
+        <tr>
+            <td>Sim: </td>
+            <td> @Html.DisplayFor(modelItem => item.Sim)</td>
+            <td>Wifi: </td>
+            <td> @Html.DisplayFor(modelItem => item.Wifi)</td>
+        </tr>
+        <tr>
+            <td>GPS: </td>
+            <td> @Html.DisplayFor(modelItem => item.GPS)</td>
+            <td>Bluetooh: </td>
+            <td> @Html.DisplayFor(modelItem => item.Bluetooth)</td>
+        </tr>
+
+        <tr>
+            <td>Cổng sạc: </td>
+            <td> @Html.DisplayFor(modelItem => item.Sac)</td>
+            <td>Jack: </td>
+            <td> @Html.DisplayFor(modelItem => item.Jack)</td>
+        </tr>
+        <tr>
+            <td>Kết nối khác: </td>
+            <td> @Html.DisplayFor(modelItem => item.KetNoiKhac)</td>
+            <td>Dung lượng pin: </td>
+            <td> @Html.DisplayFor(modelItem => item.DungLuongPin)</td>
+        </tr>
+        <tr>
+            <td>Loại pin: </td>
+            <td> @Html.DisplayFor(modelItem => item.LoaiPin)</td>
+            <td>Sạc tối đa: </td>
+            <td> @Html.DisplayFor(modelItem => item.SacToiDa)</td>
+        </tr>
+        <tr>
+            <td>Công nghệ Pin: </td>
+            <td> @Html.DisplayFor(modelItem => item.CongNghePin)</td>
+            <td>Bảo mật nâng cao: </td>
+            <td> @Html.DisplayFor(modelItem => item.BaoMatNC)</td>
+        </tr>
+
+        <tr>
+            <td>Tính năng danh bạ: </td>
+            <td> @Html.DisplayFor(modelItem => item.TinhNangDB)</td>
+            <td>Kháng nước bụi: </td>
+            <td> @Html.DisplayFor(modelItem => item.KhangNuocBui)</td>
+        </tr>
+        <tr>
+            <td>Xem phim: </td>
+            <td> @Html.DisplayFor(modelItem => item.XemPhim)</td>
+            <td>Nghe nhạc: </td>
+            <td> @Html.DisplayFor(modelItem => item.NgheNhac)</td>
+        </tr>
+        <tr>
+            <td>Thiết kế: </td>
+            <td> @Html.DisplayFor(modelItem => item.ThietKe)</td>
+            <td>Chất liệu: </td>
+            <td> @Html.DisplayFor(modelItem => item.ChatLieu)</td>
+        </tr>
+        <tr>
+            <td>Kích thước: </td>
+            <td> @Html.DisplayFor(modelItem => item.KichThuoc)</td>
+            <td>Thời điểm ra mắt: </td>
+            <td> @Html.DisplayFor(modelItem => item.ThoiDiemRaMat)</td>
+        </tr>
+        <tr>
+      
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.MaTS }) |
+            @Html.ActionLink("Details", "Details", new { id = item.MaTS }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.MaTS })
+        </td>
+        </tr>
+    }
+
+</table>

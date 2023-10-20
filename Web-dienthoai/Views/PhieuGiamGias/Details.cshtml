@@ -1,0 +1,34 @@
+﻿@model Web_dienthoai.Models.PhieuGiamGia
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông Tin Phiếu </h2>
+
+<div >
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenGiamGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenGiamGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.chietkhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.chietkhau)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaGG }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

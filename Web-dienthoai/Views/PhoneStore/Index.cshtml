@@ -1,0 +1,149 @@
+﻿@using Web_dienthoai.Models;
+@model IEnumerable<ProductView>
+
+
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml"; }
+
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+<link rel="stylesheet" href="~/Content/Image.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+
+@*slide show*@
+<div class="slideshow-container" style="padding-top:10px;text-align:center">
+
+    <div class="mySlides fade">
+        @*<div class="numbertext">1 / 3</div>*@
+        <img src="~/Images/slideshow-1.jpg" style="width:80%; height: 300px;">
+    </div>
+
+    <div class="mySlides fade">
+        @*<div class="numbertext">2 / 3</div>*@
+        <img src="~/Images/iphoneslide.jpg" style="width: 80%; height: 300px;">
+    </div>
+
+    <div class="mySlides fade">
+        @*<div class="numbertext">3 / 3</div>*@
+        <img src="~/Images/iphoneslide2.jpg" style="width: 80%; height: 300px;">
+    </div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+</div>
+
+<br />
+<br />
+@*sile show*@
+
+@*Iphone*@
+<h3 class="align: text-center" style="font-weight: bold;">iPhone</h3>
+<br />
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    @foreach (var item in Model.Where(id => id.SanPham.MaTH == "IP"))
+    {    
+        <div class="col">
+            <div class="card cardt">
+                <a href="@Url.Action("Details", "PhoneStore", new { id = item.SanPham.MaSP })">
+                    <img class="card-img-top cardt-img-top my-image"
+                         src="~/Images/Phones/@item.HinhSP.MaHinh" alt="Card image">
+                </a>
+                <div class="card-body ">
+                    <h4 class="card-title cardt-title" style="text-align: center;">@item.SanPham.TenSP</h4>
+                    <p class="card-text" style="text-align: center; color: red; font-weight: bold">@String.Format("{0:0,0}", @item.ChiTietSP.Gia) vnđ</p>
+
+                    <div style=" display: flex; justify-content: center;">  <a href="@Url.Action("Details", "PhoneStore", new { id = item.SanPham.MaSP })" class="btn btn-primary">Mua ngay</a> </div>
+
+                </div>
+            </div>
+        </div>
+     }
+    
+
+
+
+</div>
+
+
+<hr />
+<br />
+
+@*Samsung*@
+<h3 class="align: text-center" style="font-weight: bold;">Samsung</h3>
+<br />
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    @foreach (var item in Model.Where(id => id.SanPham.MaTH == "SS"))
+    {
+        <div class="col">
+            <div class="card cardt">
+                <a href="@Url.Action("Details", "PhoneStore", new { id = item.SanPham.MaSP })">
+                    <img class="card-img-top cardt-img-top my-image"
+                         src="~/Images/Phones/@item.HinhSP.MaHinh" alt="Card image">
+                </a>
+                <div class="card-body ">
+                    <h4 class="card-title cardt-title" style="text-align: center;">@item.SanPham.TenSP</h4>
+                    <p class="card-text" style="text-align: center; color: red; font-weight: bold">@String.Format("{0:0,0}", @item.ChiTietSP.Gia) vnđ</p>
+
+                    <div style=" display: flex; justify-content: center;">  <a href="@Url.Action("Details", "PhoneStore", new { id = item.SanPham.MaSP })" class="btn btn-primary">Mua ngay</a> </div>
+
+                </div>
+            </div>
+               
+        </div>
+    }
+</div>
+
+
+<hr />
+<br />
+
+@*Xiaomi*@
+<h3 class="align: text-center" style="font-weight: bold;">Huawei</h3>
+<br />
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    @foreach (var item in Model.Where(id => id.SanPham.MaTH == "HW"))
+    {
+        <div class="col">
+            <div class="card cardt">
+                <a href="@Url.Action("Details", "PhoneStore", new { id = item.SanPham.MaSP })">
+                    <img class="card-img-top cardt-img-top my-image"
+                         src="~/Images/Phones/@item.HinhSP.MaHinh" alt="Card image">
+                </a>
+                <div class="card-body ">
+                    <h4 class="card-title cardt-title" style="text-align: center;">@item.SanPham.TenSP</h4>
+                    <p class="card-text" style="text-align: center;color:red ;font-weight:bold">@String.Format("{0:0,0}", @item.ChiTietSP.Gia) vnđ</p>
+
+                    <div style=" display: flex; justify-content: center;">  <a href="@Url.Action("Details", "PhoneStore", new { id = item.SanPham.MaSP })" class="btn btn-primary">Mua ngay</a> </div>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1 }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+</script>

@@ -1,0 +1,125 @@
+﻿@using Web_dienthoai.Models;
+@model List<MatHangMua>
+@{
+    ViewBag.Title = "ThongTinMuaHang";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<h2 class=" " style="text-align:center; font-weight:bold;margin-bottom:20px; padding-top:20px;">THÔNG TIN GIỎ HÀNG</h2>
+<div style="margin-left:5%; margin-right:5%">
+    <table class="table table-success">
+        <thead>
+            <tr>
+                <th>Mã sản phẩm</th>
+                <th>Tên sản phẩm</th>
+                <th>Hình ảnh</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sp in Model)
+            {
+                <tr>
+                    <td>@sp.MaSP</td>
+                    <td>@sp.TenSP</td>
+                    <td><img src="~/Images/Phones/@sp.HinhSP" style="width:100px; height:30%" /></td>
+                    <td>@sp.SoLuong</td>
+                    <td>@String.Format("{0:0,0}", sp.DonGia) đ</td>
+                    <td>
+                        @String.Format("{0:0,0}", sp.ThanhTien()) đ<br />
+                        <p style="color:red">@sp.tengiamgia</p>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+    <div class="row" style="margin-left: 20%">
+        <div class="col-sm-6">
+            <p style="  font-size:20px;"> Tổng số lượng: @ViewBag.TongSL </p>
+        </div>
+        <div class="col-sm-6">
+            <p style="  font-size:20px;color:red;font-weight:bold"> Tổng tiền:@String.Format("{0:0,0}", @ViewBag.TongTien) VND </p>
+        </div>
+    </div>
+</div>
+<br />
+
+<h2 class=" " style="text-align:center; font-weight:bold;margin-bottom:20px; padding-top:20px;">THÔNG TIN GIAO HÀNG</h2>
+<div class="row" style="margin-left:5%; margin-right:5%;">
+    <div class="offset-md-1 col-md-10" style="background-color:white;border-radius:10px">
+        @using (Html.BeginForm("ThongTinMuaHang", "GioHang"))
+        {
+            @Html.ValidationSummary(true)
+            <div style="padding-left:20%; padding-right:20%;">
+                <h5 style="font-weight: bold;margin-top:5px; text-align:center; padding-top:5px;">Thông Tin Người Nhận</h5>
+                <div class="form-group ">
+                    <label for="name" style="font-weight: bold">Họ và Tên :</label>
+                    @Html.TextBox("TenNguoiNhan", null, new { @class = "form-control", @id = "name", required = "required" })
+                </div>
+                <div class="form-group">
+                    <label for="sdt" style="font-weight: bold">Số Điện Thoại:</label>
+                    @Html.TextBox("SDTnhan", null, new { @class = "form-control", @id = "sdt", required = "required" })
+                </div>
+                <div class="form-group">
+                    <label for="diachi" style="font-weight: bold">Địa Chỉ</label>
+                    @Html.TextBox("DiaChiNhan", null, new { @class = "form-control", @id = "diachi", required = "required" })
+                </div>
+            </div>
+
+            <hr />
+            <div class="form-group">
+                <h5 style="font-weight: bold; text-align:center;">Hình Thức Thanh Toán</h5>
+                <div style="padding-left:30%; padding-right:30%;">
+                    <div class="form-check" style="justify-items:center">
+                        <input class="form-check-input" type="radio" id="httt" name="HTThanhToan" value="Thanh Toán Khi Nhận Hàng">
+                        <div style=" border-radius:10px; font-weight: bold; width: max-content; padding:5px; border-style: solid; border-color:darkgrey">
+                            <img style="width:50px;height:50px" src="~/Images/tien.jpg" /> <a>Thanh Toán khi nhận hàng</a>
+                        </div>
+                    </div>
+
+
+                    <br />
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="httt" name="HTThanhToan" value="Thanh Toán Chuyển Khoản">
+                        <div style="border-radius: 10px; font-weight: bold; width: max-content; padding: 5px; border-style: solid; border-color: darkgrey ">
+                            <img style="width:50px;height:50px" src="~/Images/momo.png" /> <a>Ví MoMo </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="form-group">
+                <h5 style="font-weight: bold; text-align: center;">Hình Thức Giao Hàng </h5>
+                <div style="padding-left:30%; padding-right:30%;">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="htgt" name="HTGiaohang" value="Giao hàng tiêu chuẩn">
+                        <div style="border-radius: 10px; font-weight: bold; width: max-content; padding: 5px; border-style: solid; border-color: darkgrey ">
+                            <img style="width:50px;height:50px" src="~/Images/xe1.png" /> <a>Giao hàng tiêu chuẩn </a><i style="color:red">Phí 30.000 đ</i>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="htgt" name="HTGiaohang" value="Giao hàng hỏa tốc">
+                        <div style="border-radius: 10px; font-weight: bold; width: max-content; padding: 5px; border-style: solid; border-color: darkgrey ">
+                            <img style="width:50px;height:50px" src="~/Images/xe.png" /> <a>Giao hàng hỏa tốc </a><i style="color:red">Phí 66.000 đ</i>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <div style="display:flex">
+                <button type="submit" class="btn btn-primary" style="margin-left:20%; margin-right:20%;height:40px;width:100%;font-weight:bold;text-align:center"> Đặt mua </button>
+            </div>
+            <br />
+        }
+
+    </div>
+
+</div>
+

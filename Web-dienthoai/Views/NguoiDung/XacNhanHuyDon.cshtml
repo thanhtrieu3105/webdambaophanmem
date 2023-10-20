@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "XacNhanHuyDon";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<br />
+<h2  style="text-align:center">Chắc chắn hủy đơn hàng @ViewBag.madh ?</h2>
+<div style="text-align:center">
+    @Html.ActionLink("Đồng ý", "HuyDon", "NguoiDung", new { id = @ViewBag.madh }, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Trở lại", "LichSuMuaHang", "NguoiDung", null, new { @class = "btn btn-secondary" })
+
+</div>
+

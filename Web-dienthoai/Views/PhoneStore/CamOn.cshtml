@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "CamOn";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+
+<div style="text-align:center;padding-top:30px" >
+    <h2 >Cám ơn đóng góp của quý khách</h2>
+    @Html.ActionLink("Trở về", "Details", "PhoneStore", new { id = @ViewBag.masp }, new { @class = "btn btn-primary" })
+</div>
+

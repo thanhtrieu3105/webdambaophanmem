@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "DatHangThanhCong";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+<link rel="stylesheet" href="~/Content/FontText.css" />
+
+<br />
+<br />
+
+<div class="text-center order-details">
+    <div class="d-flex justify-content-center mb-5 flex-column align-items-center"> 
+    <span class="check1"><i class="fa fa-check"></i></span> 
+    <span class="font-weight-bold" style=" font-size: 200%">Đơn hàng đã được xác nhận</span> 
+    <small class="mt-2" style="font-size:200%">Nhân viên sẽ liên hệ xác nhận đơn hàng trong thời gian sớm nhất</small> 
+    </div> 
+    <button class="btn btn-primary btn-block order-button ">@Html.ActionLink("Về Trang Chủ", "Index", "PhoneStore", null, new { @class = "btn btn-primary" })</button>
+</div>
