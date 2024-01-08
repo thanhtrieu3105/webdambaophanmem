@@ -23,10 +23,12 @@ namespace Web_dienthoai
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                
                       "~/Content/bootstrap.css",
                        "~/Content/Home.css",
                         "~/Content/Image.css",
                          "~/Content/mystyle.css",
+                         "~/Content/slide.css",
                       "~/Content/site.css"));
         }
     }

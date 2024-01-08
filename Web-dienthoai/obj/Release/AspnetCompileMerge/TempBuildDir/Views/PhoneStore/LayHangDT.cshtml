@@ -1,0 +1,12 @@
+﻿@using Web_dienthoai.Models;
+@model IEnumerable<ThuongHieu>
+
+
+<ul class="menu">
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item"><a href="@Url.Action("SPTheoHang", "PhoneStore", new { MaTH = item.MaTH })">
+            @item.TenTH</a>
+    </li>
+    }
+</ul>

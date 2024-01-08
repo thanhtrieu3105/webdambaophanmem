@@ -1,0 +1,166 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var sodon = ViewBag.sldh; // Assuming SLDH represents the number of orders
+    var doanhthu = ViewBag.dt; // Assuming dt represents the total amount
+    var slkhach = ViewBag.slkh; // Assuming SLkh represents the number of customers
+    var slsanpham = ViewBag.slsp;
+}
+
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+<link rel="stylesheet" href="~/Content/Image.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+
+<h2 style="text-align:center;margin:20px">Admin  Thống Kê</h2>
+<div style="background-color:antiquewhite;margin-top:40px;width:100%;height:">
+
+    <div class="row row-cols-1 row-cols-md-4 g-4" style="padding-top:10px">
+
+        <div class="col">
+            <div class="card cardt" style="background-color:cornflowerblue">
+                <p style="font-weight:bold;margin:10px">Tổng Số Sản Phẩm</p>
+                <div class="card-body ">
+
+                    <img src="~/Images/iphoneicon.jpg" style="width:90px;height:110px" />
+                    <p style="font-size: 20px; font-weight: bold; text-align: right ">@slsanpham</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card cardt" style="background-color:crimson">
+                <p style="font-weight:bold;margin:10px">Tổng Số Doanh Thu (vnd)</p>
+                <div class="card-body ">
+
+                    <img src="~/Images/tien.jpg" style="width:90px;height:110px" />
+                    <p style="font-size: 20px; font-weight: bold; text-align: right ">@String.Format("{0:0,0}", @doanhthu) </p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card cardt" style="background-color:blueviolet">
+                <p style="font-weight:bold;margin:10px">Tổng Số Đơn Hàng</p>
+                <div class="card-body ">
+
+                    <img src="~/Images/giohang1.png" style="width:90px;height:110px" />
+                    <p style="font-size:20px;font-weight:bold;text-align:right">@sodon</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card cardt" style="background-color:slategray">
+                <p style="font-weight:bold;margin:10px">Tổng Số Khách Hàng</p>
+                <div class="card-body ">
+
+                    <img src="~/Images/user.png" style="width:90px;height:110px" />
+                    <p style="font-size: 20px; font-weight: bold; text-align: right ">@slkhach</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-light text-muted" style="margin-top: 10px;">
+
+        <hr />
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>Thương hiệu DigitalWave
+                        </h6>
+                        <p>
+                            DigitalWave là một cái tên thương hiệu đầy mạnh mẽ và năng động trong lĩnh vực bán điện thoại. Tên gọi này kết hợp giữa từ "digital" - mang ý nghĩa về công nghệ số và "wave" - biểu tượng cho sự phát triển và lan tỏa. Với sự kết hợp này, DigitalWave như muốn truyền tải thông điệp rằng họ là một cửa hàng bán điện thoại hiện đại, luôn cập nhật và tiên tiến về công nghệ.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Sản phẩm
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Huawei</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Iphone</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Oppo</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Realme</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Samsung</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Vivo</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Xiaomi</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Link hữu ích
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Bảo hành</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Bản quyền</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Phân phối</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Trợ giúp</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <p><i class="bi bi-geo-alt"></i> 828 Sư Vạn Hạnh, Quận 10, Hồ Chí Minh</p>
+                        <p>
+                            <i class="bi bi-envelope"></i>
+                            digitalwave@gmail.com
+                        </p>
+
+                        <p><i class="bi bi-telephone"></i> +84 835 911 358</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2023 Copyright:
+            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">digitalwave.org</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+
+
+
+
+
+</div>
+

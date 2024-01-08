@@ -1,0 +1,58 @@
+﻿:root {
+    --main-bg-color:;
+    --nav-color:;
+    --footer-color:;
+    --card-color:;
+    --
+}
+
+body {
+}
+
+#div-pro-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.box-pro {
+    height: 350px;
+    width: 300px;
+    text-align: center;
+    background: #ff6a00;
+}
+
+.size-img {
+    height: 200px;
+    width: auto;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.box-description {
+    height: 120px;
+    width: auto;
+    background-color: floralwhite;
+    margin: auto;
+}
+
+.margin-des {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.box-pro {
+    margin: auto;
+    margin-top: 20px;
+}
+
+h3 {
+    text-align: center;
+}
+
+.more {
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    font-size: 1.5em;
+}

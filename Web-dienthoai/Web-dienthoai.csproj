@@ -139,6 +139,7 @@
     <Compile Include="Controllers\QuanLyKhachHangController.cs" />
     <Compile Include="Controllers\QuanLySanPhamController.cs" />
     <Compile Include="Controllers\QuanLyTSKTSPController.cs" />
+    <Compile Include="Controllers\ThongkeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -234,6 +235,7 @@
     <Content Include="Content\lichsumuahang.css" />
     <Content Include="Content\mystyle.css" />
     <Content Include="Content\reset.css" />
+    <Content Include="Content\slide.css" />
     <Content Include="Content\structure.css" />
     <Content Include="Content\style01.css" />
     <Content Include="favicon.ico" />
@@ -245,6 +247,7 @@
     <Content Include="Images\fb.png" />
     <Content Include="Images\giohang1.png" />
     <Content Include="Images\home-image.png" />
+    <Content Include="Images\iphoneicon.jpg" />
     <Content Include="Images\iphoneslide.jpg" />
     <Content Include="Images\iphoneslide2.jpg" />
     <Content Include="Images\Logo-StudioGear-3-red---black.png" />
@@ -507,6 +510,8 @@
     <Content Include="Models\PhoneStore.edmx.diagram">
       <DependentUpon>PhoneStore.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\thanhtrieu-001-site1 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\thanhtrieu-001-site1 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -587,6 +592,7 @@
     <Content Include="Views\QuanLyTSKTSP\Details.cshtml" />
     <Content Include="Views\QuanLySanPham\Create.cshtml" />
     <Content Include="Views\QuanLySanPham\Details.cshtml" />
+    <Content Include="Views\Thongke\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

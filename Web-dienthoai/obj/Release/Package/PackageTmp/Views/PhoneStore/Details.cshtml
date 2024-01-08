@@ -1,0 +1,390 @@
+﻿@using Web_dienthoai.Models;
+@model DetailsView
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+<link rel="stylesheet" href="~/Content/Image.css" />
+
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="slideshow-container">
+                @foreach (var item in Model.HinhSP)
+                {
+                    <div class="mySlides " style="text-align:center">
+                        <img src="~/Images/Phones/@item.MaHinh" style="width: 60%; height: 300px;">
+                    </div>
+                }
+            </div>
+            <br>
+            <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <p class="price" style="text-align: center;">
+                <span style="font-size: 20px; padding: 5px;  ">Giá bán: <b style="font-size:30px;color:red"> @String.Format("{0:0,0}", @Model.ChiTietSP.Gia)</b> <i style="font-size:20px;font-weight:bold;color:red">VND</i></span>
+            </p>
+            <div style="display:flex">
+                <a class="btn "id="btthemsp" style="margin: 0px auto; height: 40px; width: 200px; color:white; font-weight: bold; text-align: center; background-color: #FF4A4A " href="@Url.Action("ThemSP", "GioHang", new { MaSP = Model.SanPham.MaSP })"> Đặt mua </a>
+            </div>
+            <br />
+            <hr />
+            <div style="padding-left: 0px; padding-right: 0px;">
+                <h3 style="  text-align: center; ">Mô Tả</h3>
+                <p style="  padding-left: 0px; padding-right: 0px; text-align: justify ">
+                    <span style=" font-weight: bold; text-align: center; color: #6FEDD6 ;font-size:30px ">@Model.SanPham.TenSP :</span> @Model.SanPham.MoTaSP
+                </p>
+                <hr />
+
+
+            </div>
+            @*binhluan*@
+
+            <div style="border-radius: 5px; margin: 20px 10px ;padding:10px" @*class="w-50 "*@>
+                <h3 style="text-align:center" class="">Đánh giá Điện thoại @Model.SanPham.TenSP  </h3>
+
+
+                <div style="text-align:center">
+
+                    @Html.ActionLink("Viết bình luận", "BinhLuanKH", "PhoneStore", null, new { @class = "btn btn-secondary" ,id="btvbl"})
+                </div><br />
+                <p style="text-align:center">@ViewBag.thongbao</p>
+                @foreach (var item in Model.BinhLuan)
+                {
+                    <p><b>@item.HoTen</b> | @item.ThoiGian</p>
+                    if (item.Anh != null)
+                    {
+                        <img class="w-25"  src="~/Images/BinhLuan/@item.Anh" alt="Lỗi Hình"><br /><br />
+                    }
+
+                    <p>@item.Chiase</p>
+                    <hr />
+                }
+
+
+            </div>
+
+
+        </div>
+        <div class="col-md-6">
+            <h3 style="background-color: #FF9551; text-align: center ">THÔNG SỐ KỸ THUẬT:</h3>
+            <table class="table">
+
+                <tr>
+                    <th>Mã sản phẩm: </th>
+                    <td>@Model.SanPham.MaSP</td>
+
+                </tr>
+                @if (@Model.TSKTSP.CongNgheManHinh.Length>0)
+                {
+                    <tr>
+                        <th>Công nghệ màn hình: </th>
+                        <td>@Model.TSKTSP.CongNgheManHinh</td>
+                    </tr>
+                }
+
+                @if (@Model.TSKTSP.DoPhanGiai.Length>0)
+                {
+                    <tr>
+                        <th>Độ phân giải: </th>
+                        <td>@Model.TSKTSP.DoPhanGiai</td>
+
+                    </tr>
+                }
+
+                @if (@Model.TSKTSP.ManHinhrong.Length>0)
+                {
+                    <tr>
+                        <th>Độ rộng màn hình: </th>
+                        <td>@Model.TSKTSP.ManHinhrong</td>
+                    </tr>
+                }
+                @if (@Model.TSKTSP.MatKinhCamUng.Length>0)
+                {
+                    <tr>
+                        <th>Mặt kính cảm ứng: </th>
+                        <td>@Model.TSKTSP.MatKinhCamUng</td>
+
+                    </tr>
+
+                }
+                @if (@Model.TSKTSP.DoPhanGiaiCamS.Length>0)
+                {
+                    <tr>
+                        <th>Độ phân giải Camera sau: </th>
+                        <td>@Model.TSKTSP.DoPhanGiaiCamS</td>
+                    </tr>
+                }
+                @if (@Model.TSKTSP.QuayPhim.Length>0)
+                {
+                    <tr>
+                        <th>Chất lượng hình ảnh: </th>
+                        <td>@Model.TSKTSP.QuayPhim</td>
+
+                    </tr>
+                }
+                @if (@Model.TSKTSP.Flash.Length>0)
+                {
+                    <tr>
+                        <th>Flash: </th>
+                        <td>@Model.TSKTSP.Flash</td>
+                    </tr>
+                }
+                @if (@Model.TSKTSP.TinhNangCamS.Length>0)
+                {
+                    <tr>
+                        <th>Tính năng Camera sau: </th>
+                        <td>@Model.TSKTSP.TinhNangCamS</td>
+
+                    </tr>
+                }
+                @if (@Model.TSKTSP.DoPhanGiaiCamT.Length>0)
+                {
+                    <tr>
+                        <th>Độ phân giải Camera trước: </th>
+                        <td>@Model.TSKTSP.DoPhanGiaiCamT</td>
+                    </tr>
+                }
+                @if (@Model.TSKTSP.TinhNangCamT.Length>0)
+                {
+                    <tr>
+                        <th>Tính năng Camera trước: </th>
+                        <td>@Model.TSKTSP.TinhNangCamT</td>
+
+                    </tr>
+                }
+                @if (@Model.TSKTSP.HeDieuHanh.Length>0)
+                {
+                    <tr>
+                        <th>Hệ điều hành: </th>
+                        <td>@Model.TSKTSP.HeDieuHanh</td>
+                    </tr>
+                }
+                @if (@Model.TSKTSP.CPU.Length>0)
+                {
+                    <tr>
+                        <th>CPU: </th>
+                        <td>@Model.TSKTSP.CPU</td>
+
+                    </tr>
+                }
+                @if (@Model.TSKTSP.TocDoCPU.Length>0)
+                {
+                    <tr>
+                        <th>Tốc độ CPU: </th>
+                        <td>@Model.TSKTSP.TocDoCPU</td>
+                    </tr>
+                }
+                @if (@Model.TSKTSP.GPU.Length>0)
+                {
+                    <tr>
+                        <th>GPU: </th>
+                        <td>@Model.TSKTSP.GPU</td>
+
+                    </tr>
+                }
+                @if (@Model.TSKTSP.RAM.Length>0)
+                {
+                    <tr>
+                        <th>RAM: </th>
+                        <td>@Model.TSKTSP.RAM</td>
+                    </tr>
+                }
+                @if (@Model.TSKTSP.DungLuong.Length>0)
+                {
+                    <tr>
+                        <th>Dung lượng: </th>
+                        <td>@Model.TSKTSP.DungLuong</td>
+
+                    </tr>
+                }
+                @if (@Model.TSKTSP.DungLuongCon.Length>0)
+                {
+                    <tr>
+                        <th>Dung lượng con: </th>
+                        <td>@Model.TSKTSP.DungLuongCon</td>
+                    </tr>
+                }
+                @if (@Model.TSKTSP.DanhBa.Length>0)
+                {
+                    <tr>
+                        <th>Danh bạ: </th>
+                        <td>@Model.TSKTSP.DanhBa</td>
+
+                    </tr>
+                }
+                @if (@Model.TSKTSP.Mang.Length>0)
+                {
+                    <tr>
+                        <th>Mạng: </th>
+                        <td>@Model.TSKTSP.Mang</td>
+                    </tr>
+                }
+                @if (@Model.TSKTSP.Sim.Length>0)
+                {
+                    <tr>
+                        <th>Sim: </th>
+                        <td>@Model.TSKTSP.Sim</td>
+
+                    </tr>
+                }
+                @if (@Model.TSKTSP.Wifi.Length>0)
+                {
+                    <tr>
+                        <th>Wifi: </th>
+                        <td>@Model.TSKTSP.Wifi</td>
+                    </tr>
+                }
+                @if (@Model.TSKTSP.GPS.Length>0)
+                {
+                    <tr>
+                        <th>GPS: </th>
+                        <td>@Model.TSKTSP.GPS</td>
+
+                    </tr>
+                }
+                @if (@Model.TSKTSP.Bluetooth.Length>0)
+                {
+                    <tr>
+                        <th>Bluetooh: </th>
+                        <td>@Model.TSKTSP.Bluetooth</td>
+                    </tr>
+                }
+                @if (@Model.TSKTSP.Sac.Length>0)
+                {
+                    <tr>
+                        <th>Cổng sạc: </th>
+                        <td>@Model.TSKTSP.Sac</td>
+
+                    </tr>
+                }
+                @if ( @Model.TSKTSP.Jack.Length>0)
+                {
+                    <tr>
+                        <th>Jack: </th>
+                        <td>@Model.TSKTSP.Jack</td>
+                    </tr>
+                }
+                @if (@Model.TSKTSP.KetNoiKhac.Length>0)
+                {
+                    <tr>
+                        <th>Kết nối khác: </th>
+                        <td>@Model.TSKTSP.KetNoiKhac</td>
+
+                    </tr>
+                }
+                @if (@Model.TSKTSP.DungLuongPin.Length>0)
+                {
+                    <tr>
+                        <th>Dung lượng pin: </th>
+                        <td>@Model.TSKTSP.DungLuongPin</td>
+                    </tr>
+                }
+                @if (@Model.TSKTSP.LoaiPin.Length>0)
+                {
+                    <tr>
+                        <th>Loại pin: </th>
+                        <td>@Model.TSKTSP.LoaiPin</td>
+
+                    </tr>
+                }
+                @if (@Model.TSKTSP.SacToiDa.Length>0)
+                {
+                    <tr>
+                        <th>Sạc tối đa: </th>
+                        <td>@Model.TSKTSP.SacToiDa</td>
+                    </tr>
+                }
+                @if (@Model.TSKTSP.CongNghePin.Length>0)
+                {
+                    <tr>
+                        <th>Công nghệ Pin: </th>
+                        <td>@Model.TSKTSP.CongNghePin</td>
+
+                    </tr>
+                }
+                @if (@Model.TSKTSP.BaoMatNC.Length>0)
+                {
+                    <tr>
+                        <th>Bảo mật nâng cao: </th>
+                        <td>@Model.TSKTSP.BaoMatNC</td>
+                    </tr>
+                }
+                @if (@Model.TSKTSP.TinhNangDB.Length>0)
+                {
+
+                    <tr>
+                        <th>Tính năng danh bạ: </th>
+                        <td>@Model.TSKTSP.TinhNangDB</td>
+
+                    </tr>
+                }
+                @if (@Model.TSKTSP.KhangNuocBui.Length>0)
+                {
+                    <tr>
+                        <th>Kháng nước bụi: </th>
+                        <td>@Model.TSKTSP.KhangNuocBui</td>
+                    </tr>
+                }
+                @if (@Model.TSKTSP.XemPhim.Length>0)
+                {
+                    <tr>
+                        <th>Xem phim: </th>
+                        <td>@Model.TSKTSP.XemPhim</td>
+
+                    </tr>
+                }
+                @if (@Model.TSKTSP.NgheNhac.Length>0)
+                {
+                    <tr>
+                        <th>Nghe nhạc: </th>
+                        <td> @Model.TSKTSP.NgheNhac</td>
+                    </tr>
+                }
+                @if (@Model.TSKTSP.ThietKe.Length>0)
+                {
+                    <tr>
+                        <th>Thiết kế: </th>
+                        <td>@Model.TSKTSP.ThietKe</td>
+
+                    </tr>
+                }
+                @if (@Model.TSKTSP.ChatLieu.Length>0)
+                {
+                    <tr>
+                        <th>Chất liệu: </th>
+                        <td>@Model.TSKTSP.ChatLieu</td>
+                    </tr>
+                }
+                @if (@Model.TSKTSP.KichThuoc.Length>0)
+                {
+                    <tr>
+                        <th>Kích thước: </th>
+                        <td>@Model.TSKTSP.KichThuoc</td>
+
+                    </tr>
+                }
+                @if (@Model.TSKTSP.ThoiDiemRaMat.HasValue)
+                {
+                    <tr>
+                        <th>Thời điểm ra mắt: </th>
+                        <td>@Model.TSKTSP.ThoiDiemRaMat</td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+

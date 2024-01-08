@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -24,9 +25,9 @@ namespace Web_dienthoai.Controllers
         // GET: QuanLyHinhSPs/Details/5
 
         // GET: QuanLyHinhSPs/Create
-        public ActionResult Create()
+        public ActionResult Create(String id)
         {
-            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP");
+            ViewBag.MaSP = id;
             return View();
         }
 
@@ -35,62 +36,85 @@ namespace Web_dienthoai.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaHinh,MaSP")] HinhSP hinhSP)
+        public ActionResult Create([Bind(Include = "HinhSP,MaSP")] HinhSP hinhSP, HttpPostedFileBase Anh)
         {
-            if (ModelState.IsValid)
+            string id = hinhSP.MaSP;
+            if (Anh == null || Anh.FileName == null)
             {
-                db.HinhSP.Add(hinhSP);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                ModelState.AddModelError(string.Empty, "Ảnh sản phẩm không được để trống");
+            }
+            else
+            {
+                var fileName1 = Path.GetFileName(Anh.FileName);
+                if (db.HinhSP.Any(s => s.MaHinh == fileName1))
+                {
+                    ModelState.AddModelError(string.Empty, "Trùng tên hình với sản phẩm khác");
+                }
             }
 
-            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", hinhSP.MaSP);
-            return View(hinhSP);
+            if (ModelState.IsValid)
+            {
+                var hinhsp = new HinhSP();
+                if (Anh != null && Anh.FileName != null)
+                {
+                    var fileName = Path.GetFileName(Anh.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Images/Phones"), fileName);
+                    hinhsp.MaHinh = fileName;
+                    hinhsp.MaSP = hinhSP.MaSP;
+                    Anh.SaveAs(path);
+                }
+
+                db.HinhSP.Add(hinhsp);
+                db.SaveChanges();
+               
+                return RedirectToAction("Index", "QuanLyHinhSPs",new { id=id});
+            }
+
+            ViewBag.MaSP = id;
+            return View(id);
         }
 
         // GET: QuanLyHinhSPs/Edit/5
-        public ActionResult Edit(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            HinhSP hinhSP = db.HinhSP.Find(id);
-            if (hinhSP == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", hinhSP.MaSP);
-            return View(hinhSP);
-        }
+        //public ActionResult Edit(string id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    HinhSP hinhSP = db.HinhSP.Find(id);
+        //    if (hinhSP == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", hinhSP.MaSP);
+        //    return View(hinhSP);
+        //}
 
-        // POST: QuanLyHinhSPs/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaHinh,MaSP")] HinhSP hinhSP)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(hinhSP).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", hinhSP.MaSP);
-            return View(hinhSP);
-        }
+        //// POST: QuanLyHinhSPs/Edit/5
+        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit([Bind(Include = "MaHinh,MaSP")] HinhSP hinhSP)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(hinhSP).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", hinhSP.MaSP);
+        //    return View(hinhSP);
+        //}
 
         // GET: QuanLyHinhSPs/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(string id, string masp)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            HinhSP hinhSP = db.HinhSP.FirstOrDefault(s=>s.MaSP==id);
+           
+                HinhSP hinhSP = db.HinhSP.FirstOrDefault(s=>s.MaHinh== id);
             db.HinhSP.Remove(hinhSP);
-            return View(hinhSP);
+            return RedirectToAction("Index", "QuanLyHinhSPs", new { id=masp});
+
         }
 
     

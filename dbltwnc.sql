@@ -1574,7 +1574,7 @@ values('KH02',N'Nguyễn Thị Lan','0123456789',N'300 Sư Vạn Hạnh Phườn
 insert into KhachHang
 values('KH03',N'Nguyễn Thanh Tân','0366234567',N'235 Minh Phụng 10 Quận 11 HCM ','Nam','5/23/2000','1234abab','tannt@gmail.com','LKH03')
 
-select * from SanPham
+
 go
 create or alter proc xoasp @masp char(4)
 as
@@ -1586,4 +1586,110 @@ begin
 	delete TSKTSP where MaSP=@masp
 	delete SanPham where MaSP=@masp
 end
-select * from TSKTSP
+go
+---
+create or alter proc XoaDH_SDT @sdt varchar(10)
+as
+begin
+
+		delete ChiTietDH where MaDH in(select d.MaDH 
+										from DonHang d join KhachHang k on d.MaKH=k.MaKH 
+										where k.SDT=@sdt)
+		delete DonHang where MaDH in(select d.MaDH 
+										from DonHang d join KhachHang k on d.MaKH=k.MaKH 
+										where k.SDT=@sdt)
+end
+go
+--------------------------------------PROC 8 soluong san pham da ban theo mat hang--------------------
+go
+create or alter proc SLSPban @tensp varchar(30) ,@sl int output
+as
+begin
+	declare @masp varchar (4)
+    select @masp=MaSP from SanPham  where TenSP=@tensp
+	select @sl=sum(d.SoLuong) from ChiTietSP c join ChiTietDH d on c.MaCTSP=d.MaCTSP 
+	where c.MaSP=@masp 
+
+end
+-----------------------------------------proc7 them chi tiet don hang------------------------
+go
+create or alter proc ThemCTDH @mactdh varchar(6),@sl int,@thanhtien int,@mactsp char(7),@madh char(4),@giamua int
+as
+begin
+	insert into ChiTietDH
+	values(@mactdh,@sl,@giamua,@thanhtien,@mactsp,@madh)
+end
+go
+----------------------------------------------proc 6 xoa don hang--------------
+go
+create or alter proc XoaDH @madh char (4)
+as
+begin
+	delete ChiTietDH where MaDH=@madh
+	delete DonHang where MaDH=@madh
+end
+----------------------------------------------proc 5 Them Don hang moi----------------------
+go
+create or alter proc ThemDH  @madh char(4), @makh varchar(4),@tennn nvarchar(30),
+@sdt varchar(10),@diachi nvarchar(100),@trigia int,@httt nvarchar(30),@htgh nvarchar (30),@tongtien int
+as
+begin
+	
+	insert into DonHang
+	values(@madh,@makh,@tennn,@sdt,@diachi,@trigia,N'Chờ Duyệt',GETDATE(),@httt,@htgh,@tongtien)
+end
+---------------------------------------------proc 4 xoa PHIEU giam gia------------
+go
+create or alter proc XoaPhieuGG @maphieugg int
+as
+begin
+	delete GiamGiaSP where MaGG=@maphieugg
+	delete PhieuGiamGia where MaGG=@maphieugg
+end
+go
+---------------------------------------------proc 3 them PHIEU giam gia--------------------------------------------------------------------------------------
+create or alter proc ThemPhieuGiamGia @tengiamgia nvarchar (35),@chietkhau int
+as
+begin
+	declare @ck dec(4,3)
+	set @ck=@chietkhau/100.0
+	insert into PhieuGiamGia(TenGiamGia,chietkhau)
+	values(@tengiamgia,@ck)
+end
+------------------------------------proc2.Xoa khach hang --------------------------
+
+go
+create or alter proc XoaKH @sdt varchar(10)
+as
+begin
+	declare @madh varchar(4),@mkh varchar(4)
+	select @mkh=MaKH from KhachHang where SDT=@sdt
+	declare cr01 cursor scroll
+	for select MaDH from DonHang where MaKH=@mkh
+	
+	open cr01 
+	fetch first from cr01 into @madh
+	while @@FETCH_STATUS=0
+	begin
+		delete ChiTietDH where MaDH=@madh
+		delete DonHang where MaDH=@madh	
+		fetch next from cr01 into @madh
+	end
+	
+	delete BinhLuan where MaKH=@mkh
+	delete KhachHang where SDT=@sdt
+	close cr01
+	deallocate cr01
+end
+------------------------------------proc1.Them khach hang moi-------------
+
+go
+create or alter proc ThemKH @makh char(4), @tenkh NVARCHAR(30),@sdt varchar(10),
+@diachi nvarchar(100),@gioitinh nvarchar(3),@ngaysinh datetime,@mk varchar(8),@email varchar(30)
+as
+begin
+	insert into KhachHang
+	values(@makh,@tenkh,@sdt,@diachi,@gioitinh,@ngaysinh,@mk,@email,'LKH01')
+end
+
+

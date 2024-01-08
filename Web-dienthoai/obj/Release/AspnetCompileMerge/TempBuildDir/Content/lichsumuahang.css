@@ -1,0 +1,18 @@
+﻿body {
+}
+.DonHang {
+    display: flex;
+    flex-direction: row;
+}
+
+.div-left {
+    width: 25%;
+    height: 100px;
+    font-size: 20px;
+}
+
+
+.div-right {
+    width: 75%;
+    background-color: white;
+}

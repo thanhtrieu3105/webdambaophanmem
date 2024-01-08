@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "TrangThongTinTK";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+    KhachHang kh = Session["KhachHang"] as KhachHang;
+}
+@using Web_dienthoai.Models;
+@model KhachHang
+
+<br />
+<h3 class="" style="text-align:center;">Hồ sơ của tôi</h3>
+<p class="" style="text-align:center;">Quản lý thông tin hồ sở để bảo mật tài khoản</p>
+<hr />
+
+<table class="table table-bordered ">
+    @*<div class="form-group">
+            Ảnh đại diện
+            <div class="col-md-10">
+                <input type="file" name="ImagePro" />
+            </div>
+        </div>*@
+
+    <tr>
+        <td>Tên đăng nhập: </td>
+        <td>@kh.SDT</td>
+    </tr>
+    <tr>
+        <td>Họ tên: </td>
+        <td><input value="@kh.TenKH" /></td>
+    </tr>
+    <tr>
+        <td>Email: </td>
+        <td><input value="@kh.Email" /></td>
+    </tr>
+    <tr>
+        <td>Số điện thoại: </td>
+        <td><input value="@kh.SDT" /></td>
+    </tr>
+    <tr>
+        <td>Địa chỉ: </td>
+        <td><input value="@kh.DiaChi" /></td>
+    </tr>
+    <tr>
+        <td>Điện thoại: </td>
+        <td><input value="@kh.SDT" /></td>
+    </tr>
+    <tr>
+        <td>Giới tính: </td>
+        <td>
+            @kh.GioiTinh
+            @*@Html.RadioButton("GioiTinh", "Nam") Nam
+                @Html.RadioButton("GioiTinh", "Nữ") Nữ*@
+        </td>
+    </tr>
+    <tr>
+        <td>Ngày sinh: </td>
+        <td>@kh.NgaySinh </td>
+        @*<td>
+                @Html.DropDownList("Day", Enumerable.Range(1, 31).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Day")
+                @Html.DropDownList("Month", Enumerable.Range(1, 12).Select(i => new SelectListItem { Value = i.ToString(), Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(i) }), "Month")
+                @Html.DropDownList("Year", Enumerable.Range(1900, 114).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Year")
+            </td>*@
+    </tr>
+</table>

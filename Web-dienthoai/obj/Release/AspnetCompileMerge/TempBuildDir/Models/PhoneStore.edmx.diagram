@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="716e2fdd9c844732b95dfac2a8dec135" Name="Diagram1" ZoomLevel="48">
+        <EntityTypeShape EntityType="QLDienThoaiModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDienThoaiModel.BinhLuan" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDienThoaiModel.ChiTietDH" Width="1.5" PointX="11.125" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDienThoaiModel.ChiTietSP" Width="1.5" PointX="7.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDienThoaiModel.DonHang" Width="1.5" PointX="13.375" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDienThoaiModel.DungLuong" Width="1.5" PointX="9.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDienThoaiModel.GiamGiaSP" Width="1.5" PointX="5.125" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDienThoaiModel.HinhSP" Width="1.5" PointX="2.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDienThoaiModel.KhachHang" Width="1.5" PointX="7.875" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDienThoaiModel.LoaiKH" Width="1.5" PointX="10.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDienThoaiModel.Mau" Width="1.5" PointX="7.125" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDienThoaiModel.PhieuGiamGia" Width="1.5" PointX="4.875" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDienThoaiModel.SanPham" Width="1.5" PointX="2.875" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDienThoaiModel.TSKTSP" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDienThoaiModel.ThuongHieu" Width="1.5" PointX="2.875" PointY="14.5" IsExpanded="true" />
+        <AssociationConnector Association="QLDienThoaiModel.FK__BinhLuan__MaKH__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDienThoaiModel.FK__BinhLuan__MaSP__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDienThoaiModel.FK__ChiTietDH__MaCTS__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDienThoaiModel.FK__ChiTietDH__MaDH__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDienThoaiModel.FK__ChiTietSP__MaDL__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDienThoaiModel.FK__ChiTietSP__MaMau__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDienThoaiModel.FK__ChiTietSP__MaSP__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDienThoaiModel.FK__DonHang__MaKH__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDienThoaiModel.FK__GiamGiaSP__MaGG__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDienThoaiModel.FK__GiamGiaSP__MaSP__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDienThoaiModel.FK__HinhSP__MaSP__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDienThoaiModel.FK__KhachHang__MaLoa__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDienThoaiModel.FK__SanPham__MaTH__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDienThoaiModel.FK__TSKTSP__MaSP__44FF419A" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
